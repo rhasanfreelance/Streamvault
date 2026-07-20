@@ -12,12 +12,12 @@ export default function ContentCard({ title }: { title: Title }) {
       {typeof title.progressPercent === 'number' && (
         <div className="mt-1 h-1 w-full overflow-hidden rounded-full bg-line">
           <div
-            className="h-full rounded-full bg-marquee"
+            className="h-full rounded-full bg-prime"
             style={{ width: `${title.progressPercent}%` }}
           />
         </div>
       )}
-      <div className="mt-2 flex items-center gap-2 font-mono text-[11px] text-smoke">
+      <div className="mt-2 flex items-center gap-2 font-body text-[11px] font-medium text-smoke">
         <span>{title.year}</span>
         <span aria-hidden>·</span>
         <span>{title.runtimeMinutes} min</span>

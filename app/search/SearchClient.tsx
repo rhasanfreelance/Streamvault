@@ -48,9 +48,9 @@ export default function SearchClient({
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setGenre('')}
-            className={`focus-ring rounded-full border px-3 py-1 font-mono text-xs uppercase tracking-wide transition-colors ${
+            className={`focus-ring rounded-full border px-3 py-1 font-body font-bold text-xs uppercase tracking-wide transition-colors ${
               genre === ''
-                ? 'border-marquee bg-marquee text-ink'
+                ? 'border-prime bg-prime text-ink'
                 : 'border-line text-smoke hover:text-bone'
             }`}
           >
@@ -60,9 +60,9 @@ export default function SearchClient({
             <button
               key={g}
               onClick={() => setGenre(g)}
-              className={`focus-ring rounded-full border px-3 py-1 font-mono text-xs uppercase tracking-wide transition-colors ${
+              className={`focus-ring rounded-full border px-3 py-1 font-body font-bold text-xs uppercase tracking-wide transition-colors ${
                 genre === g
-                  ? 'border-marquee bg-marquee text-ink'
+                  ? 'border-prime bg-prime text-ink'
                   : 'border-line text-smoke hover:text-bone'
               }`}
             >

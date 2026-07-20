@@ -21,13 +21,13 @@ export default function TitleDetailPage({ params }: { params: { id: string } }) 
           <KeyArt title={title} aspect="poster" />
         </div>
         <div>
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-marquee">
+          <span className="font-body text-xs font-bold uppercase tracking-[0.15em] text-prime">
             {title.badge === 'included' ? 'Included with your plan' : 'Available to rent'}
           </span>
-          <h1 className="mt-2 font-display text-4xl font-semibold italic text-bone sm:text-5xl">
+          <h1 className="mt-2 font-display text-4xl font-extrabold uppercase tracking-tight text-bone sm:text-5xl">
             {title.name}
           </h1>
-          <div className="mt-3 flex flex-wrap items-center gap-2 font-mono text-sm text-smoke">
+          <div className="mt-3 flex flex-wrap items-center gap-2 font-body text-sm font-medium text-smoke">
             <span>{title.year}</span>
             <span aria-hidden>·</span>
             <span>{title.runtimeMinutes} min</span>
@@ -51,13 +51,14 @@ export default function TitleDetailPage({ params }: { params: { id: string } }) 
 
           <Link
             href={`/watch/${title.id}`}
-            className="focus-ring mt-8 inline-flex items-center gap-2 rounded-sm bg-bone px-7 py-3 font-body text-sm font-semibold text-ink transition-transform hover:scale-[1.02]"
+            className="focus-ring mt-8 inline-flex items-center gap-2 rounded-sm bg-bone px-7 py-3 font-body text-sm font-bold text-ink transition-transform hover:scale-[1.02]"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path d="M8 5v14l11-7z" />
             </svg>
-            Play
+            Watch now
           </Link>
+          <p className="mt-2 font-body text-xs text-smoke">Sign-in required to watch.</p>
         </div>
       </div>
 

@@ -10,7 +10,7 @@ export default function ContentRow({ row }: { row: Row }) {
     <section aria-labelledby={`row-${row.id}`} className="py-4">
       <h2
         id={`row-${row.id}`}
-        className="mb-3 px-4 font-display text-xl font-semibold text-bone sm:px-8"
+        className="mb-3 px-4 font-display text-xl font-bold text-bone sm:px-8"
       >
         {row.title}
       </h2>

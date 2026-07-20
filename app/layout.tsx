@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
-import { Fraunces, Inter, IBM_Plex_Mono } from 'next/font/google';
+import { Archivo, Inter } from 'next/font/google';
 import './globals.css';
 import NavBar from '@/components/NavBar';
+import Providers from '@/components/Providers';
 
-const fraunces = Fraunces({
+const archivo = Archivo({
   subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-fraunces',
+  weight: ['600', '700', '800'],
+  variable: '--font-archivo',
 });
 
 const inter = Inter({
@@ -16,23 +16,19 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const plexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-plex-mono',
-});
-
 export const metadata: Metadata = {
   title: 'StreamVault',
-  description: 'A cinema-inspired streaming catalog built with real, openly-licensed short films.',
+  description: 'A Prime Video-style streaming catalog built with real, openly-licensed films.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable} ${plexMono.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${inter.variable}`}>
       <body className="font-body bg-ink text-bone antialiased">
-        <NavBar />
-        <main className="pt-16">{children}</main>
+        <Providers>
+          <NavBar />
+          <main className="pt-16">{children}</main>
+        </Providers>
       </body>
     </html>
   );
