@@ -1,74 +1,171 @@
-# StreamVault
+# 🎬 StreamVault
 
-A Prime Video–style streaming app built with Next.js 14 (App Router),
-TypeScript, Tailwind CSS, Prisma, and NextAuth.js — dark navy UI, the
-signature Prime blue accent, bold condensed sans typography, and real
-email/password authentication.
+> A modern Prime Video-inspired streaming platform built with Next.js, featuring secure authentication, persistent watchlists, and real licensed films.
 
-## Content note
+**Live Demo:** https://projectstreamvault.vercel.app
 
-Movie poster art is real, third-party copyrighted material, so this project
-does not reproduce any. Every title card is an original typographic key-art
-panel instead. The catalog itself uses real, legally streamable films — the
-Blender Foundation's openly licensed short films (*Big Buck Bunny*,
-*Elephants Dream*, *Sintel*, *Tears of Steel*), released under Creative
-Commons Attribution — so every "Watch now" button streams an actual video.
+---
 
-## Authentication
+## Overview
 
-- Sign up / sign in with email + password (`/signup`, `/login`).
-- Passwords are hashed with bcrypt before they ever touch the database —
-  never stored in plain text.
-- Sessions are JWT-based via NextAuth.js.
-- `/watch/*` is gated by middleware — signed-out visitors are redirected to
-  `/login` and returned to the title they wanted afterward.
-- User accounts are real rows in a database via Prisma, not an in-memory
-  mock — they persist across restarts.
+**StreamVault** is a full-stack video streaming application inspired by Amazon Prime Video, built with Next.js and modern web technologies.
 
-## Run locally
+Instead of relying on placeholder content, the application streams openly licensed films from the Blender Foundation, delivering an authentic viewing experience while respecting copyright. Combined with secure authentication, persistent user accounts, and a polished cinematic interface, StreamVault demonstrates a production-ready streaming platform architecture.
+
+---
+
+## Features
+
+- 🎬 Prime Video-inspired cinematic interface
+- 🔐 Secure email & password authentication
+- 👤 Persistent user accounts
+- ❤️ Personal watchlist
+- ▶️ Stream real licensed films
+- 🎥 Dedicated title pages
+- 📺 Full-screen video player
+- 🔒 Protected watch routes using middleware
+- 🌙 Dark, modern responsive UI
+- 📱 Optimized for desktop, tablet, and mobile
+
+---
+
+## Tech Stack
+
+### Frontend
+
+- Next.js 14 (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+
+### Backend
+
+- NextAuth.js
+- Prisma ORM
+- SQLite (development)
+- PostgreSQL (production)
+
+---
+
+## Project Structure
+
+```
+app/
+├── api/
+├── login/
+├── signup/
+├── title/
+├── watch/
+└── page.tsx
+
+components/
+lib/
+prisma/
+public/
+middleware.ts
+```
+
+---
+
+## Getting Started
+
+### 1. Clone the repository
 
 ```bash
-cp .env.example .env        # already included as .env for this handoff
-npm install                 # also runs `prisma generate`
-npx prisma db push          # creates the local SQLite database + tables
+git clone https://github.com/rhasanfreelance/Streamvault.git
+cd Streamvault
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure environment variables
+
+Copy `.env.example` to `.env`
+
+```env
+DATABASE_URL=
+NEXTAUTH_SECRET=
+NEXTAUTH_URL=
+```
+
+### 4. Create the database
+
+```bash
+npx prisma db push
+```
+
+### 5. Start the development server
+
+```bash
 npm run dev
 ```
 
-Open http://localhost:3000, create an account, then click "Watch now" on
-any title.
+Visit **http://localhost:3000**
 
-> This sandbox's outbound network couldn't reach Prisma's engine CDN
-> (`binaries.prisma.sh`) to run a full local build here, so `npm install`
-> and `prisma generate` should be run and verified on your machine — this
-> is a completely standard Prisma setup, but worth confirming since it
-> wasn't build-tested end-to-end in this handoff.
+---
 
-## Deploy to Vercel
+## Architecture
 
-SQLite's local file does not persist across serverless invocations, so for
-production, swap the datasource in `prisma/schema.prisma` to Postgres:
+- Next.js App Router
+- Credentials authentication with NextAuth
+- JWT-based user sessions
+- Prisma ORM for database access
+- Middleware route protection
+- Persistent watchlists
+- Modular component architecture
+- Responsive streaming interface
 
-```prisma
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-```
+---
 
-Then:
-1. Provision a Postgres database (Vercel Postgres, Neon, or Supabase all work).
-2. Set `DATABASE_URL` and `NEXTAUTH_SECRET` (generate one with `openssl rand -base64 32`) and `NEXTAUTH_URL` (your production URL) as Vercel environment variables.
-3. `vercel --prod`, or connect the repo at vercel.com/new.
+## Content
 
-## Structure
+Unlike many streaming clones that use placeholder assets, **StreamVault** showcases openly licensed films from the Blender Foundation, allowing users to watch real content while respecting copyright.
 
-- `app/page.tsx` — home page (hero + shelves)
-- `app/title/[id]/page.tsx` — title detail page
-- `app/watch/[id]/page.tsx` — player page (auth-protected)
-- `app/login/`, `app/signup/` — auth pages
-- `app/api/auth/[...nextauth]/route.ts` — NextAuth handler
-- `app/api/auth/signup/route.ts` — account creation endpoint
-- `middleware.ts` — protects `/watch/*`
-- `prisma/schema.prisma` — User + Watchlist models
-- `lib/auth.ts` — NextAuth credentials provider config
-- `lib/catalog.ts` — the content catalog (edit here to add titles)
+Movie artwork is represented using original typographic title cards rather than copyrighted promotional posters.
+
+---
+
+## Vision
+
+**StreamVault** explores what a modern streaming platform could look like when built with contemporary full-stack technologies.
+
+The project emphasizes clean UI design, secure authentication, scalable architecture, and an immersive viewing experience while demonstrating best practices for real-world web application development.
+
+---
+
+## Future Plans
+
+- Continue Watching
+- Multiple user profiles
+- Personalized recommendations
+- Categories & genres
+- Search functionality
+- Ratings & reviews
+- Watch history
+- Favorites collections
+- Trailer previews
+- Progressive Web App support
+
+---
+
+## Acknowledgements
+
+- Blender Foundation for openly licensed films
+- Next.js
+- Prisma
+- NextAuth.js
+- Tailwind CSS
+
+---
+
+## License
+
+This project is released under the MIT License.
+
+---
+
+Made with ❤️ for movie lovers.
